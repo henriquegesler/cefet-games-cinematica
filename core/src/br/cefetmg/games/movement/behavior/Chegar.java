@@ -30,29 +30,27 @@ public class Chegar extends AlgoritmoMovimentacao {
     @Override
     public Direcionamento guiar(Pose agente) {
         Direcionamento output = new Direcionamento();
-        /*if(output.velocidade > this.radius){
-
-        }
         output.velocidade.x = alvo.getObjetivo().x - agente.posicao.x;
         output.velocidade.y = alvo.getObjetivo().y - agente.posicao.y;
-        output.velocidade.nor();
+        if(output.velocidade.len() < this.radius){
+            output.velocidade.x = 0;
+            output.velocidade.y = 0;
+            return output;
+        }
+        //timeToTarget = 1/timeToTarget;
+        output.velocidade.scl(timeToTarget);
         output.velocidade.scl(maxVelocidade);
-        */
+        if(output.velocidade.len() > maxVelocidade){
+            output.velocidade.nor();
+            output.velocidade.scl(maxVelocidade);
+        }
         agente.olharNaDirecaoDaVelocidade(output.velocidade);
-        
-        
-        
-        // calcula que direção tomar (configura um objeto Direcionamento 
-        // e o retorna)
-        // ...
-        // super.alvo já contém a posição do alvo
-        // agente (parâmetro) é a pose do agente que estamos guiando
-        // ...
+        output.rotacao = 0;
         return output;
     }
 
     @Override
     public int getTeclaParaAtivacao() {
-        return Keys.S;
+        return Keys.A;
     }
 }
