@@ -22,7 +22,12 @@ public class Fugir extends AlgoritmoMovimentacao {
     @Override
     public Direcionamento guiar(Pose agente) {
         Direcionamento output = new Direcionamento();
-
+        output.velocidade.x = agente.posicao.x - alvo.getObjetivo().x;
+        output.velocidade.y = agente.posicao.y - alvo.getObjetivo().y;
+        output.velocidade.nor();
+        output.velocidade.scl(maxVelocidade);
+        
+        agente.olharNaDirecaoDaVelocidade(output.velocidade);
         // calcula que direção tomar (configura um objeto Direcionamento 
         // e o retorna)
         // ...

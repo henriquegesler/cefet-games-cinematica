@@ -11,28 +11,37 @@ import static com.badlogic.gdx.math.MathUtils.random;
  *
  * @author Flávio Coutinho <fegemo@cefetmg.br>
  */
-public class Buscar extends AlgoritmoMovimentacao {
+public class Chegar extends AlgoritmoMovimentacao {
 
-    private static final char NOME = 's';
+    private static final char NOME = 'a';
+    private static float timeToTarget = (float) 0.25;
+    private float radius;
 
-    public Buscar(float maxVelocidade) {
+    public Chegar(float maxVelocidade) {
         this(NOME, random(maxVelocidade-20,maxVelocidade));
     }
 
-    protected Buscar(char nome, float maxVelocidade) {
+    protected Chegar(char nome, float maxVelocidade) {
         super(nome);
         this.maxVelocidade = maxVelocidade;
+        this.radius = 30;
     }
 
     @Override
     public Direcionamento guiar(Pose agente) {
         Direcionamento output = new Direcionamento();
+        /*if(output.velocidade > this.radius){
+
+        }
         output.velocidade.x = alvo.getObjetivo().x - agente.posicao.x;
         output.velocidade.y = alvo.getObjetivo().y - agente.posicao.y;
         output.velocidade.nor();
         output.velocidade.scl(maxVelocidade);
-        
+        */
         agente.olharNaDirecaoDaVelocidade(output.velocidade);
+        
+        
+        
         // calcula que direção tomar (configura um objeto Direcionamento 
         // e o retorna)
         // ...

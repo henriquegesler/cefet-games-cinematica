@@ -18,6 +18,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Circle;
+import static com.badlogic.gdx.math.MathUtils.random;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
@@ -67,7 +68,7 @@ public class Cinematica extends ApplicationAdapter {
 
         // configura e registra os comportamentos disponíveis
         algoritmos = new Array<>();
-        buscar = new Buscar(40);
+        buscar = new Buscar(60);
         buscar.alvo = objetivo;
         vagar = new Vagar(40, 2);
         fugir = new Fugir(40);
